@@ -1,3 +1,29 @@
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: monospace, sans-serif;
+}
+
 .alert-error {
-  color: red;
+  color: white;
+  background-color: red;
+  height: 50px;
+  padding: 10px;
+}
+
+.headerContent {
+  background-color: blue;
+  color: white;
+  height: 75px;
+}
+
+.headerContent h2 {
+  padding: 10px;
+}
+
+#root ul {
+  border-bottom: 2px solid lightblue;
+  padding: 10px;
 }

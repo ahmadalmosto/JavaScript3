@@ -1,6 +1,7 @@
 'use strict';
 
 {
+
   function fetchJSON(url, cb) {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', url);
@@ -27,14 +28,23 @@
       }
     });
     return elem;
+
   }
 
-  function renderRepoDetails(repo, ul) {
-    createAndAppend('li', ul, { text: repo.name });
-  }
+  (function headerContent() {
+    // const root = document.getElementById('root');
+    const header = createAndAppend('header', root, {
+      class: 'headerContent'
+    });
+    const h2 = createAndAppend('h2', header, {
+      text: 'HYF Repositories'
+    });
+
+  }());
 
   function main(url) {
     fetchJSON(url, (err, repos) => {
+      console.log(repos)
       const root = document.getElementById('root');
       if (err) {
         createAndAppend('div', root, {
@@ -43,12 +53,25 @@
         });
         return;
       }
-      const ul = createAndAppend('ul', root);
-      repos.forEach(repo => renderRepoDetails(repo, ul));
+
+      for (let repo of repos) {
+
+        const ul = createAndAppend('ul', root);
+        const li = createAndAppend('li', ul);
+        repo.updated_at = new Date(repo.updated_at).toLocaleString();
+        li.innerHTML = `Repository : ${repo.name}</br> Description : ${repo.description}
+        </br> Forks : ${repo.forks}</br> Updated : ${repo.updated_at}`;
+
+        repos.sort((a, b) => {
+          return a.name.localeCompare(b.name);
+        })
+
+      }
+
     });
   }
+  
 
-  const HYF_REPOS_URL =
-    'https://api.github.com/orgs/HackYourFuture/repos?per_page=100';
+  const HYF_REPOS_URL = 'https://api.github.com/orgs/HackYourFuture/repos?per_page=10';
   window.onload = () => main(HYF_REPOS_URL);
 }
