@@ -11,7 +11,7 @@ function addFriend() {
   })
 
   xhr.onload = function () {
-    if (xhr.status > 400) {
+    if (this.status === 200 && this.status < 400) {
       console.log(xhr.status + xhr.message)
     } else {
       console.log('http error', xhr.status)

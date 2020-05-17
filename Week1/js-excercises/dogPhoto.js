@@ -1,5 +1,5 @@
 function dogPhoto() {
-  const url = "https://dog.ceo/api/breeds/image/random";
+  var url = "https://dog.ceo/api/breeds/image/random";
   const xhr = new XMLHttpRequest();
   xhr.onload = function () {
     const dataResponse = JSON.parse(xhr.responseText);
@@ -31,7 +31,7 @@ dogPhoto();
 //..........
 function dogImage() {
 
-  axios.get('https://dog.ceo/api/breeds/image/random')
+  axios.get(url)
     .then((response) => {
       // console.log(response)
       let secondBtn = document.getElementById('secondBtn');
