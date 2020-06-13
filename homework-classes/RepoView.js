@@ -26,7 +26,7 @@
         const repoInfos = [repo.name, repo.description, repo.forks, repo.updated_at];
         const repoNames = ['Repository', 'Description', 'Forks', 'Updated']
 
-        const repoLi = createAndAppend('li', this.container);
+        const repoLi = createAndAppend('div', this.container);
 
         repoInfos.forEach((info, index) => {
           const p = createAndAppend('p', repoLi);

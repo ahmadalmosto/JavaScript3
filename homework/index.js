@@ -24,13 +24,8 @@
       return elem;
     }
 
-    function renderRepoDetails(repo, ul) {
-      createAndAppend('li', ul, {
-        text: repo.name
-      });
-    }
 
-    function main(url) {
+    function main(url ,repos) {
       fetchJSON(url, (err, repos) => {
         const root = document.getElementById('root');
         if (err) {
